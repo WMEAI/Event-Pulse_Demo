@@ -209,10 +209,10 @@ export function CommandCenter() {
                 <YAxis stroke="rgba(240,244,248,0.65)" />
                 <Tooltip contentStyle={{ background: "rgba(12,16,28,0.70)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", border: "1px solid rgba(240,244,248,0.16)" }} />
                 <Bar dataKey="value" radius={[12, 12, 12, 12]}>
-                  {funnel.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={entry.fill} />
-                  ))}
-                </Bar>
+  {Array.isArray(funnel) ? funnel.map((entry: any, index: number) => (
+    <Cell key={`cell-${index}`} fill={entry.fill} />
+  )) : null}
+</Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
