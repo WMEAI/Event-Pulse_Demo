@@ -13,7 +13,8 @@ function money(n: any) {
 function pct(n: any) {
   const v = Number(n);
   if (!Number.isFinite(v)) return "—";
-  return `${Math.round(v * 1000) / 10}
+  return `${Math.round(v * 1000) / 10}%`;
+}
 export function CommandCenter() {
   const weeksQ = useQuery({ queryKey: ["weeks"], queryFn: () => apiGet<WeekRecord[]>("/demo/weeks") });
   const alertsQ = useQuery({ queryKey: ["alerts"], queryFn: () => apiGet<any>("/demo/alerts") });
