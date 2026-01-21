@@ -23,92 +23,77 @@ function money(n: any) {
   if (!Number.isFinite(v)) return "—";
   return `£${Math.round(v).toLocaleString()}`;
 }
-
 function pct(n: any) {
   const v = Number(n);
   if (!Number.isFinite(v)) return "—";
   return `${Math.round(v * 1000) / 10}%`;
 }
 
+// Normalize whatever the API returned into an array of weeks
+function normalizeWeeks(data: any): any[] {
+  if (Array.isArray(data)) return data;
+  const maybe = data?.weeks || data?.data;
+  return Array.isArray(maybe) ? maybe : [];
+}
+
 export function CommandCenter() {
-  // ✅ Hooks first, always
   const weeksQ = useQuery({
     queryKey: ["weeks"],
     queryFn: () => apiGet<WeekRecord[]>("/demo/weeks"),
+    retry: 1,
   });
 
   const alertsQ = useQuery({
     queryKey: ["alerts"],
     queryFn: () => apiGet<any>("/demo/alerts"),
+    retry: 1,
   });
 
-  // ✅ Normalize data shape safely (so UI never crashes on weird API shapes)
+  // ✅ Hooks must run every render — so compute derived values up here
   const weeksRaw: any = weeksQ.data;
+  const weeks = useMemo(() => normalizeWeeks(weeksRaw), [weeksRaw]);
 
-  const weeks = useMemo<any[]>(() => {
-    if (Array.isArray(weeksRaw)) return weeksRaw;
-    if (Array.isArray(weeksRaw?.weeks)) return weeksRaw.weeks;
-    if (Array.isArray(weeksRaw?.data)) return weeksRaw.data;
-    return [];
-  }, [weeksRaw]);
-
-  const latest = useMemo<any | null>(() => {
-    if (!Array.isArray(weeks) || weeks.length === 0) return null;
-    return weeks[weeks.length - 1];
-  }, [weeks]);
-
-  const prev = useMemo<any | null>(() => {
-    if (!Array.isArray(weeks) || weeks.length < 2) return latest;
-    return weeks[weeks.length - 2];
-  }, [weeks, latest]);
+  const latest: any = weeks.length ? weeks[weeks.length - 1] : null;
+  const prev: any = weeks.length > 1 ? weeks[weeks.length - 2] : latest;
 
   const completion = useMemo(() => {
-    const start = latest?.ga4?.registration_start ?? 0;
-    const complete = latest?.ga4?.registration_complete ?? 0;
-    return complete / Math.max(1, start);
+    const complete = Number(latest?.ga4?.registration_complete ?? 0);
+    const start = Math.max(1, Number(latest?.ga4?.registration_start ?? 0));
+    return complete / start;
   }, [latest]);
 
   const completionPrev = useMemo(() => {
-    const start = prev?.ga4?.registration_start ?? 0;
-    const complete = prev?.ga4?.registration_complete ?? 0;
-    return complete / Math.max(1, start);
+    const complete = Number(prev?.ga4?.registration_complete ?? 0);
+    const start = Math.max(1, Number(prev?.ga4?.registration_start ?? 0));
+    return complete / start;
   }, [prev]);
 
-  const completionDelta = useMemo(() => completion - completionPrev, [completion, completionPrev]);
+  const completionDelta = completion - completionPrev;
 
-  const pace = useMemo(() => {
-    if (!Array.isArray(weeks) || weeks.length === 0) return [];
-    return buildPaceForecast(weeks as any);
-  }, [weeks]);
+  const pace = useMemo(() => buildPaceForecast(weeks as any), [weeks]);
+  const funnel = useMemo(() => (latest ? buildFunnel(latest) : []), [latest]);
+  const channelMix = useMemo(() => buildChannelMix(weeks as any), [weeks]);
 
-  const funnel = useMemo(() => {
-    if (!latest) return [];
-    return buildFunnel(latest);
-  }, [latest]);
+  const alertsRaw: any = alertsQ.data;
+  const alerts = Array.isArray(alertsRaw?.alerts) ? alertsRaw.alerts : [];
 
-  const channelMix = useMemo(() => {
-    if (!Array.isArray(weeks) || weeks.length === 0) return [];
-    return buildChannelMix(weeks as any);
-  }, [weeks]);
+  const alertsState =
+    alertsQ.isLoading ? "loading" : alertsQ.isError ? "error" : "ready";
 
-  const alerts = useMemo(() => {
-    const raw = alertsQ.data;
-    if (Array.isArray(raw)) return raw;
-    if (Array.isArray(raw?.alerts)) return raw.alerts;
-    return [];
-  }, [alertsQ.data]);
+  const sevTone = (s: string) =>
+    s === "high" ? "coral" : s === "medium" ? "violet" : "mint";
 
-  const alertsState = alertsQ.isLoading ? "loading" : alertsQ.isError ? "error" : "ready";
-
-  const sevTone = (s: string) => (s === "high" ? "coral" : s === "medium" ? "violet" : "mint");
-
-  // ✅ Now it is safe to early-return (all hooks already ran)
+  // ✅ Now you can safely return early — hooks already ran
   if (weeksQ.isLoading) {
     return (
       <Shell>
         <div className="glass sheen" style={{ padding: 18, maxWidth: 560 }}>
-          <div style={{ fontSize: 18, fontWeight: 950 }}>Loading Command Center…</div>
-          <div style={{ opacity: 0.75, marginTop: 6 }}>Warming up data + forecasts.</div>
+          <div style={{ fontSize: 18, fontWeight: 950 }}>
+            Loading Command Center…
+          </div>
+          <div style={{ opacity: 0.75, marginTop: 6 }}>
+            Warming up data + forecasts.
+          </div>
           <div
             style={{
               marginTop: 12,
@@ -123,7 +108,8 @@ export function CommandCenter() {
                 width: "46%",
                 height: "100%",
                 borderRadius: 999,
-                background: "linear-gradient(90deg, rgba(123,110,246,0.35), rgba(62,205,163,0.25))",
+                background:
+                  "linear-gradient(90deg, rgba(123,110,246,0.35), rgba(62,205,163,0.25))",
               }}
             />
           </div>
@@ -132,17 +118,48 @@ export function CommandCenter() {
     );
   }
 
-  if (weeksQ.isError) return <Shell><div>API error. Check /api/demo/weeks</div></Shell>;
+  if (weeksQ.isError) {
+    return (
+      <Shell>
+        <div className="glass sheen" style={{ padding: 18, maxWidth: 720 }}>
+          <div style={{ fontSize: 18, fontWeight: 950 }}>API error</div>
+          <div style={{ opacity: 0.8, marginTop: 6 }}>
+            The app couldn’t load <code>/api/demo/weeks</code>.
+          </div>
+          <div style={{ marginTop: 12, fontSize: 12, opacity: 0.75 }}>
+            Try opening this in a new tab to confirm it responds:
+            <div style={{ marginTop: 8 }}>
+              <code>/api/demo/weeks</code>
+            </div>
+          </div>
+          <div style={{ marginTop: 12 }}>
+            <a href="/overview" style={{ textDecoration: "none", opacity: 0.9 }}>
+              Open Overview →
+            </a>
+          </div>
+        </div>
+      </Shell>
+    );
+  }
 
-  if (!Array.isArray(weeks) || weeks.length === 0) {
+  if (!latest || weeks.length === 0) {
     return (
       <Shell>
         <div className="glass sheen" style={{ padding: 18, maxWidth: 680 }}>
-          <div style={{ fontSize: 18, fontWeight: 950 }}>No demo weeks data yet</div>
-          <div style={{ opacity: 0.78, marginTop: 6 }}>
-            The API returned an unexpected shape. Try again in a moment.
+          <div style={{ fontSize: 18, fontWeight: 950 }}>
+            No demo weeks data yet
           </div>
-          <div style={{ marginTop: 10, fontSize: 12, opacity: 0.75, whiteSpace: "pre-wrap" }}>
+          <div style={{ opacity: 0.78, marginTop: 6 }}>
+            The API returned an unexpected shape.
+          </div>
+          <div
+            style={{
+              marginTop: 10,
+              fontSize: 12,
+              opacity: 0.75,
+              whiteSpace: "pre-wrap",
+            }}
+          >
             {JSON.stringify(weeksRaw, null, 2)}
           </div>
           <div style={{ marginTop: 12 }}>
@@ -155,35 +172,54 @@ export function CommandCenter() {
     );
   }
 
-  // At this point latest should exist, but keep it safe anyway
-  const safeLatest = latest ?? weeks[weeks.length - 1];
-
   return (
     <Shell>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 14,
+        }}
+      >
         <div>
-          <div style={{ fontSize: 26, fontWeight: 950, letterSpacing: -0.6 }}>Command Center</div>
+          <div style={{ fontSize: 26, fontWeight: 950, letterSpacing: -0.6 }}>
+            Command Center
+          </div>
           <div style={{ opacity: 0.75, marginTop: 6 }}>
             High-energy ops room view: pace, constraints, channel mix, and alerts.
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span className="dot" style={{ background: "var(--mint)", boxShadow: "0 0 0 6px rgba(62,205,163,0.12)" }} />
+          <span
+            className="dot"
+            style={{
+              background: "var(--mint)",
+              boxShadow: "0 0 0 6px rgba(62,205,163,0.12)",
+            }}
+          />
           <Pill tone="mint">LIVE</Pill>
         </div>
       </div>
 
-      <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: 12 }}>
+      <div
+        style={{
+          marginTop: 14,
+          display: "grid",
+          gridTemplateColumns: "repeat(4, minmax(0,1fr))",
+          gap: 12,
+        }}
+      >
         <div className="kpi-tile sheen" style={{ padding: 16 }}>
           <div className="kpi-label">Registrations completed</div>
-          <div className="kpi-value">{safeLatest?.ga4?.registration_complete ?? "—"}</div>
-          <div className="kpi-sub">Show-up proxy: {safeLatest?.ga4?.show_up ?? "—"}</div>
+          <div className="kpi-value">{latest?.ga4?.registration_complete ?? 0}</div>
+          <div className="kpi-sub">Show-up proxy: {latest?.ga4?.show_up ?? 0}</div>
         </div>
 
         <div className="kpi-tile sheen" style={{ padding: 16 }}>
           <div className="kpi-label">Paid spend (week)</div>
-          <div className="kpi-value">{money(safeLatest?.total_spend)}</div>
-          <div className="kpi-sub">Blended CPA: {money(safeLatest?.blended_cpa)}</div>
+          <div className="kpi-value">{money(latest?.total_spend ?? 0)}</div>
+          <div className="kpi-sub">Blended CPA: {money(latest?.blended_cpa ?? 0)}</div>
         </div>
 
         <div className="kpi-tile sheen" style={{ padding: 16 }}>
@@ -211,8 +247,18 @@ export function CommandCenter() {
         </div>
       </div>
 
-      <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: 12 }}>
-        <Card title="Registration pace forecast (demo)" right={<Pill tone="violet">FORECAST</Pill>}>
+      <div
+        style={{
+          marginTop: 14,
+          display: "grid",
+          gridTemplateColumns: "1.6fr 1fr",
+          gap: 12,
+        }}
+      >
+        <Card
+          title="Registration pace forecast (demo)"
+          right={<Pill tone="violet">FORECAST</Pill>}
+        >
           <div style={{ width: "100%", height: 320 }}>
             <ResponsiveContainer>
               <AreaChart data={Array.isArray(pace) ? pace : []}>
@@ -242,29 +288,12 @@ export function CommandCenter() {
         <Card title="Live alerts" right={<Pill tone="coral">SHIFTS</Pill>}>
           <div style={{ display: "grid", gap: 10 }}>
             {alertsState === "loading" && (
-              <div style={{ display: "grid", gap: 10 }}>
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className="glass sheen"
-                    style={{
-                      padding: 12,
-                      borderRadius: 18,
-                      border: "1px solid var(--glass-border)",
-                      background: "linear-gradient(180deg, rgba(240,244,248,0.10), rgba(240,244,248,0.05))",
-                    }}
-                  >
-                    <div style={{ height: 12, width: "65%", borderRadius: 999, background: "rgba(240,244,248,0.10)" }} />
-                    <div style={{ marginTop: 10, height: 10, width: "90%", borderRadius: 999, background: "rgba(240,244,248,0.08)" }} />
-                    <div style={{ marginTop: 6, height: 10, width: "78%", borderRadius: 999, background: "rgba(240,244,248,0.08)" }} />
-                  </div>
-                ))}
-              </div>
+              <div style={{ opacity: 0.8 }}>Loading alerts…</div>
             )}
 
             {alertsState === "error" && (
               <div style={{ opacity: 0.8 }}>
-                Alerts are temporarily unavailable. (Demo functions may be cold-starting.)
+                Alerts are temporarily unavailable.
                 <div style={{ marginTop: 8 }}>
                   <a href="/alerts" style={{ textDecoration: "none" }}>
                     Open Alerts →
@@ -275,43 +304,26 @@ export function CommandCenter() {
 
             {alertsState === "ready" && (
               <>
-                {(Array.isArray(alerts) ? alerts : []).slice(0, 4).map((a: any) => (
+                {alerts.slice(0, 4).map((a: any) => (
                   <div
-                    key={a?.id ?? Math.random()}
+                    key={a.id}
                     className="glass sheen"
                     style={{
                       padding: 12,
                       borderRadius: 18,
                       border: "1px solid var(--glass-border)",
-                      background: "linear-gradient(180deg, rgba(240,244,248,0.10), rgba(240,244,248,0.05))",
+                      background:
+                        "linear-gradient(180deg, rgba(240,244,248,0.10), rgba(240,244,248,0.05))",
                       boxShadow: "var(--shadow-card)",
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ fontWeight: 900 }}>{a?.title ?? "Alert"}</div>
-                      <Pill tone={sevTone(String(a?.severity ?? "low")) as any}>
-                        {String(a?.severity ?? "low").toUpperCase()}
+                      <div style={{ fontWeight: 900 }}>{a.title}</div>
+                      <Pill tone={sevTone(String(a.severity)) as any}>
+                        {String(a.severity).toUpperCase()}
                       </Pill>
                     </div>
-                    <div style={{ marginTop: 6, opacity: 0.85, lineHeight: 1.45 }}>
-                      {a?.message ?? ""}
-                    </div>
-                    <div style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
-                      {(Array.isArray(a?.recommendedNext) ? a.recommendedNext : []).slice(0, 2).map((x: string, i: number) => (
-                        <span
-                          key={i}
-                          style={{
-                            fontSize: 12,
-                            padding: "6px 10px",
-                            borderRadius: 999,
-                            border: "1px solid rgba(240,244,248,0.14)",
-                            background: "rgba(240,244,248,0.04)",
-                          }}
-                        >
-                          {x}
-                        </span>
-                      ))}
-                    </div>
+                    <div style={{ marginTop: 6, opacity: 0.85, lineHeight: 1.45 }}>{a.message}</div>
                   </div>
                 ))}
                 <a href="/alerts" style={{ opacity: 0.8, textDecoration: "none" }}>
@@ -342,14 +354,16 @@ export function CommandCenter() {
                 <Bar dataKey="value" radius={[12, 12, 12, 12]}>
                   {Array.isArray(funnel)
                     ? funnel.map((entry: any, index: number) => (
-                        <Cell key={"cell-" + index} fill={entry?.fill} />
+                        <Cell key={`cell-${index}`} fill={entry?.fill ?? "var(--mint)"} />
                       ))
                     : null}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div style={{ opacity: 0.72, marginTop: 8 }}>Worst conversion step is coral (binding constraint).</div>
+          <div style={{ opacity: 0.72, marginTop: 8 }}>
+            Worst conversion step is coral (binding constraint).
+          </div>
         </Card>
 
         <Card title="Channel mix (spend vs conversions)" right={<Pill tone="violet">MIX</Pill>}>
@@ -446,22 +460,32 @@ function ActionCard(props: { tone: "mint" | "violet" | "coral"; title: string; i
 }
 
 function buildPaceForecast(weeks: any[]) {
-  const points = weeks.map((w: any, i: number) => ({
+  const safeWeeks = Array.isArray(weeks) ? weeks : [];
+
+  const points = safeWeeks.map((w: any, i: number) => ({
     idx: i,
-    name: `W${w.week}`,
-    actual: weeks.slice(0, i + 1).reduce((s: number, x: any) => s + (x.ga4?.registration_complete || 0), 0),
-    weekly: w.ga4?.registration_complete || 0,
+    name: `W${w?.week ?? i + 1}`,
+    actual: safeWeeks
+      .slice(0, i + 1)
+      .reduce((s: number, x: any) => s + Number(x?.ga4?.registration_complete ?? 0), 0),
+    weekly: Number(w?.ga4?.registration_complete ?? 0),
   }));
+
+  if (points.length === 0) return [];
 
   const last = points[points.length - 1];
   const horizon = 6;
   const recent = points.slice(Math.max(0, points.length - 4));
-  const avgWeekly = recent.reduce((s: number, x: any) => s + x.weekly, 0) / Math.max(1, recent.length);
+  const avgWeekly =
+    recent.reduce((s: number, x: any) => s + Number(x.weekly ?? 0), 0) / Math.max(1, recent.length);
   const target = Math.round(last.actual * 1.12);
 
   const data: any[] = [];
   for (let i = 0; i < points.length + horizon; i++) {
-    const base = i < points.length ? points[i].actual : Math.round(last.actual + avgWeekly * (i - (points.length - 1)));
+    const base =
+      i < points.length
+        ? points[i].actual
+        : Math.round(last.actual + avgWeekly * (i - (points.length - 1)));
     const forecast = i < points.length ? null : base;
     const actual = i < points.length ? base : null;
 
@@ -479,17 +503,17 @@ function buildPaceForecast(weeks: any[]) {
       target,
     });
   }
-
   return data;
 }
 
 function buildFunnel(latest: any) {
+  const ga4 = latest?.ga4 ?? {};
   const steps = [
-    { name: "Sessions", value: latest?.ga4?.sessions ?? 0 },
-    { name: "LP views", value: latest?.ga4?.landing_page_views ?? 0 },
-    { name: "Reg start", value: latest?.ga4?.registration_start ?? 0 },
-    { name: "Reg complete", value: latest?.ga4?.registration_complete ?? 0 },
-    { name: "Show-up", value: latest?.ga4?.show_up ?? 0 },
+    { name: "Sessions", value: Number(ga4.sessions ?? 0) },
+    { name: "LP views", value: Number(ga4.landing_page_views ?? 0) },
+    { name: "Reg start", value: Number(ga4.registration_start ?? 0) },
+    { name: "Reg complete", value: Number(ga4.registration_complete ?? 0) },
+    { name: "Show-up", value: Number(ga4.show_up ?? 0) },
   ];
 
   let worstIdx = 1;
@@ -510,13 +534,14 @@ function buildFunnel(latest: any) {
 }
 
 function buildChannelMix(weeks: any[]) {
-  return weeks.map((w: any) => ({
-    name: `W${w.week}`,
-    GoogleSpend: w?.channels?.google_ads?.spend ?? 0,
-    MetaSpend: w?.channels?.meta_ads?.spend ?? 0,
-    LinkedInSpend: w?.channels?.linkedin_ads?.spend ?? 0,
-    GoogleConv: w?.channels?.google_ads?.conversions ?? 0,
-    MetaConv: w?.channels?.meta_ads?.conversions ?? 0,
-    LinkedInConv: w?.channels?.linkedin_ads?.conversions ?? 0,
+  const safeWeeks = Array.isArray(weeks) ? weeks : [];
+  return safeWeeks.map((w: any, i: number) => ({
+    name: `W${w?.week ?? i + 1}`,
+    GoogleSpend: Number(w?.channels?.google_ads?.spend ?? 0),
+    MetaSpend: Number(w?.channels?.meta_ads?.spend ?? 0),
+    LinkedInSpend: Number(w?.channels?.linkedin_ads?.spend ?? 0),
+    GoogleConv: Number(w?.channels?.google_ads?.conversions ?? 0),
+    MetaConv: Number(w?.channels?.meta_ads?.conversions ?? 0),
+    LinkedInConv: Number(w?.channels?.linkedin_ads?.conversions ?? 0),
   }));
 }
