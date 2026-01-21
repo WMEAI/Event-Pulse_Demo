@@ -1,0 +1,96 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "apps/web/dist"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  port = 8888
+  targetPort = 5173
+  functionsPort = 9999
+
+# API routes (explicit because Netlify splat would treat /demo/weeks as nested)
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+
+[[redirects]]
+  from = "/api/copilot_chat"
+  to = "/.netlify/functions/copilot_chat"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/weeks"
+  to = "/.netlify/functions/demo_weeks"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/taxonomy"
+  to = "/.netlify/functions/demo_taxonomy"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/cards"
+  to = "/.netlify/functions/demo_cards"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/simulate"
+  to = "/.netlify/functions/demo_simulate"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/segments"
+  to = "/.netlify/functions/demo_segments"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/fatigue"
+  to = "/.netlify/functions/demo_fatigue"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/alerts"
+  to = "/.netlify/functions/demo_alerts"
+  status = 200
+
+[[redirects]]
+  from = "/api/demo/narrative"
+  to = "/.netlify/functions/demo_narrative"
+  status = 200
+
+# SPA fallback so deep links like /segments work
+[[redirects]]
+  from = "/api/email/digest"
+  to = "/.netlify/functions/email_digest"
+  status = 200
+
+[[redirects]]
+  from = "/api/email/realtime"
+  to = "/.netlify/functions/email_realtime_alert"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"
+
+[[scheduled]]
+  path = "/.netlify/functions/sense_refresh"
+  schedule = "*/15 * * * *"
+
+[[scheduled]]
+  path = "/.netlify/functions/email_digest_morning"
+  schedule = "0 6 * * *"
+
+[[scheduled]]
+  path = "/.netlify/functions/email_digest_afternoon"
+  schedule = "0 16 * * *"
+
+[[scheduled]]
+  path = "/.netlify/functions/email_realtime_alert"
+  schedule = "*/15 * * * *"

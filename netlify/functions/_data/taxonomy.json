@@ -1,0 +1,68 @@
+{
+  "eventId": "ibtm_world_demo",
+  "eventName": "IBTM World (Demo)",
+  "audience": {
+    "icpDefinition": "VP+ and Director+ in Events, Travel, Corporate Event Planning. Priority regions: EMEA, UK, Spain.",
+    "personas": [
+      "Hosted Buyer",
+      "Exhibitor",
+      "Corporate Event Planner",
+      "MICE Professional"
+    ],
+    "segments": [
+      "VP+ EMEA",
+      "Director UK",
+      "Manager Spain",
+      "SMB Prospect",
+      "Enterprise Target Accounts"
+    ],
+    "regions": [
+      "EMEA",
+      "UK",
+      "Spain",
+      "North America"
+    ]
+  },
+  "offers": [
+    {
+      "offerId": "visit",
+      "label": "Visit",
+      "ticketTypes": [
+        {
+          "ticketTypeId": "visitor",
+          "label": "Visitor",
+          "price": 0,
+          "currency": "EUR"
+        }
+      ]
+    },
+    {
+      "offerId": "buyer",
+      "label": "Hosted Buyer Program",
+      "ticketTypes": [
+        {
+          "ticketTypeId": "hosted_buyer",
+          "label": "Hosted Buyer",
+          "price": 0,
+          "currency": "EUR"
+        }
+      ]
+    }
+  ],
+  "attribution": {
+    "campaignNamingRules": [
+      "channel|objective|segment|geo|event|year"
+    ],
+    "utmRules": [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term"
+    ],
+    "channelMapping": {
+      "cpc": "paid_search",
+      "paid_social": "paid_social"
+    }
+  }
+}

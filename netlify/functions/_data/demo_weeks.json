@@ -1,0 +1,1502 @@
+[
+  {
+    "week": 0,
+    "week_label": "Week 0 (26 Aug - 20 Nov)",
+    "total_conversions": 0.0,
+    "total_spend": 0.0,
+    "channels": {
+      "google_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "meta_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "linkedin_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      }
+    },
+    "blended_cpa": null,
+    "ga4": {
+      "sessions": 12243,
+      "landing_page_views": 9549,
+      "registration_start": 466,
+      "registration_complete": 295,
+      "show_up": 191
+    },
+    "crm": {
+      "mql": 47,
+      "sql": 17,
+      "opportunities": 5,
+      "won_deals": 0,
+      "sponsor_pipeline": 249697.58,
+      "sponsor_closed": 48543.38
+    },
+    "email": {
+      "sends": 49319,
+      "delivered": 48655,
+      "open": 14142,
+      "click": 1715,
+      "bounce": 664,
+      "complaint": 9,
+      "unsub": 70
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 68,
+        "icp_score": 0.89,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 48,
+        "icp_score": 0.65,
+        "show_up_rate": 0.62
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 62,
+        "icp_score": 0.6,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 71,
+        "icp_score": 0.37,
+        "show_up_rate": 0.58
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 46,
+        "icp_score": 0.71,
+        "show_up_rate": 0.64
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.38,
+        "ctr": 0.0353,
+        "cpa": null,
+        "fatigue_index": 0.68,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.79,
+        "ctr": 0.0067,
+        "cpa": null,
+        "fatigue_index": 1.44,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.35,
+        "ctr": 0.0056,
+        "cpa": null,
+        "fatigue_index": 1.11,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.7
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.55
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.39
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.73
+      }
+    ]
+  },
+  {
+    "week": 1,
+    "week_label": "Week 1 (26 Aug - 17 Nov)",
+    "total_conversions": 0.0,
+    "total_spend": 0.0,
+    "channels": {
+      "google_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "meta_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "linkedin_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      }
+    },
+    "blended_cpa": null,
+    "ga4": {
+      "sessions": 12295,
+      "landing_page_views": 9590,
+      "registration_start": 471,
+      "registration_complete": 300,
+      "show_up": 188
+    },
+    "crm": {
+      "mql": 53,
+      "sql": 21,
+      "opportunities": 7,
+      "won_deals": 1,
+      "sponsor_pipeline": 242290.1,
+      "sponsor_closed": 50744.27
+    },
+    "email": {
+      "sends": 48798,
+      "delivered": 48101,
+      "open": 14147,
+      "click": 1617,
+      "bounce": 697,
+      "complaint": 13,
+      "unsub": 78
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 63,
+        "icp_score": 0.85,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 39,
+        "icp_score": 0.6,
+        "show_up_rate": 0.62
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 46,
+        "icp_score": 0.54,
+        "show_up_rate": 0.69
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 89,
+        "icp_score": 0.36,
+        "show_up_rate": 0.57
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 63,
+        "icp_score": 0.78,
+        "show_up_rate": 0.62
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.21,
+        "ctr": 0.0344,
+        "cpa": null,
+        "fatigue_index": 0.64,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.63,
+        "ctr": 0.0064,
+        "cpa": null,
+        "fatigue_index": 1.45,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.02,
+        "ctr": 0.0054,
+        "cpa": null,
+        "fatigue_index": 1.03,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.72
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.54
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.54
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.43
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.66
+      }
+    ]
+  },
+  {
+    "week": 2,
+    "week_label": "Week 2 (26 Aug - 10 Nov)",
+    "total_conversions": 0.0,
+    "total_spend": 0.0,
+    "channels": {
+      "google_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "meta_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "linkedin_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      }
+    },
+    "blended_cpa": null,
+    "ga4": {
+      "sessions": 11590,
+      "landing_page_views": 9040,
+      "registration_start": 448,
+      "registration_complete": 283,
+      "show_up": 184
+    },
+    "crm": {
+      "mql": 50,
+      "sql": 19,
+      "opportunities": 5,
+      "won_deals": 0,
+      "sponsor_pipeline": 263378.58,
+      "sponsor_closed": 62234.94
+    },
+    "email": {
+      "sends": 47001,
+      "delivered": 46317,
+      "open": 13485,
+      "click": 1512,
+      "bounce": 684,
+      "complaint": 10,
+      "unsub": 87
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 66,
+        "icp_score": 0.9,
+        "show_up_rate": 0.67
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 64,
+        "icp_score": 0.61,
+        "show_up_rate": 0.61
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 44,
+        "icp_score": 0.55,
+        "show_up_rate": 0.62
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 62,
+        "icp_score": 0.36,
+        "show_up_rate": 0.55
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 47,
+        "icp_score": 0.8,
+        "show_up_rate": 0.67
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.17,
+        "ctr": 0.0343,
+        "cpa": null,
+        "fatigue_index": 0.63,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.67,
+        "ctr": 0.0063,
+        "cpa": null,
+        "fatigue_index": 1.5,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.17,
+        "ctr": 0.0054,
+        "cpa": null,
+        "fatigue_index": 1.09,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.68
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.61
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.57
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.46
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.67
+      }
+    ]
+  },
+  {
+    "week": 3,
+    "week_label": "Week 3 (26 Aug - 3 Nov)",
+    "total_conversions": 0.0,
+    "total_spend": 0.0,
+    "channels": {
+      "google_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "meta_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "linkedin_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      }
+    },
+    "blended_cpa": null,
+    "ga4": {
+      "sessions": 12543,
+      "landing_page_views": 9783,
+      "registration_start": 510,
+      "registration_complete": 319,
+      "show_up": 204
+    },
+    "crm": {
+      "mql": 52,
+      "sql": 21,
+      "opportunities": 6,
+      "won_deals": 1,
+      "sponsor_pipeline": 245047.44,
+      "sponsor_closed": 64900.38
+    },
+    "email": {
+      "sends": 46701,
+      "delivered": 46090,
+      "open": 12590,
+      "click": 1342,
+      "bounce": 611,
+      "complaint": 8,
+      "unsub": 93
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 50,
+        "icp_score": 0.84,
+        "show_up_rate": 0.58
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 56,
+        "icp_score": 0.61,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 58,
+        "icp_score": 0.54,
+        "show_up_rate": 0.69
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 85,
+        "icp_score": 0.41,
+        "show_up_rate": 0.62
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 70,
+        "icp_score": 0.82,
+        "show_up_rate": 0.57
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.15,
+        "ctr": 0.0329,
+        "cpa": null,
+        "fatigue_index": 0.65,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.62,
+        "ctr": 0.0078,
+        "cpa": null,
+        "fatigue_index": 1.19,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.1,
+        "ctr": 0.0047,
+        "cpa": null,
+        "fatigue_index": 1.22,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.69
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.59
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.55
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.43
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.71
+      }
+    ]
+  },
+  {
+    "week": 4,
+    "week_label": "Week 4 (26 Aug - 27 Oct)",
+    "total_conversions": 0.0,
+    "total_spend": 0.0,
+    "channels": {
+      "google_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "meta_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      },
+      "linkedin_ads": {
+        "spend": 0.0,
+        "conversions": 0.0
+      }
+    },
+    "blended_cpa": null,
+    "ga4": {
+      "sessions": 12568,
+      "landing_page_views": 9803,
+      "registration_start": 533,
+      "registration_complete": 326,
+      "show_up": 202
+    },
+    "crm": {
+      "mql": 61,
+      "sql": 25,
+      "opportunities": 7,
+      "won_deals": 1,
+      "sponsor_pipeline": 233449.86,
+      "sponsor_closed": 54840.83
+    },
+    "email": {
+      "sends": 48213,
+      "delivered": 47556,
+      "open": 13588,
+      "click": 1516,
+      "bounce": 657,
+      "complaint": 10,
+      "unsub": 79
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 60,
+        "icp_score": 0.9,
+        "show_up_rate": 0.61
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 60,
+        "icp_score": 0.62,
+        "show_up_rate": 0.64
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 50,
+        "icp_score": 0.59,
+        "show_up_rate": 0.65
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 83,
+        "icp_score": 0.37,
+        "show_up_rate": 0.56
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 73,
+        "icp_score": 0.79,
+        "show_up_rate": 0.62
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.12,
+        "ctr": 0.0351,
+        "cpa": null,
+        "fatigue_index": 0.6,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.82,
+        "ctr": 0.0069,
+        "cpa": null,
+        "fatigue_index": 1.42,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.39,
+        "ctr": 0.0051,
+        "cpa": null,
+        "fatigue_index": 1.23,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.67
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.54
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.4
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.7
+      }
+    ]
+  },
+  {
+    "week": 5,
+    "week_label": "Week 5 (26 Aug - 20 Oct)",
+    "total_conversions": 749.0,
+    "total_spend": 22276.31,
+    "channels": {
+      "google_ads": {
+        "spend": 6172.46,
+        "conversions": 284.0
+      },
+      "meta_ads": {
+        "spend": 8426.25,
+        "conversions": 415.0
+      },
+      "linkedin_ads": {
+        "spend": 7677.6,
+        "conversions": 50.0
+      }
+    },
+    "blended_cpa": 29.74140186915888,
+    "ga4": {
+      "sessions": 61373,
+      "landing_page_views": 47870,
+      "registration_start": 2394,
+      "registration_complete": 1466,
+      "show_up": 912
+    },
+    "crm": {
+      "mql": 246,
+      "sql": 106,
+      "opportunities": 32,
+      "won_deals": 5,
+      "sponsor_pipeline": 1038324.29,
+      "sponsor_closed": 242340.67
+    },
+    "email": {
+      "sends": 48998,
+      "delivered": 48253,
+      "open": 13789,
+      "click": 1505,
+      "bounce": 745,
+      "complaint": 4,
+      "unsub": 58
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 300,
+        "icp_score": 0.88,
+        "show_up_rate": 0.64
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 278,
+        "icp_score": 0.63,
+        "show_up_rate": 0.64
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 222,
+        "icp_score": 0.51,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 379,
+        "icp_score": 0.4,
+        "show_up_rate": 0.55
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 287,
+        "icp_score": 0.79,
+        "show_up_rate": 0.61
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.32,
+        "ctr": 0.0354,
+        "cpa": 21.73,
+        "fatigue_index": 0.69,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.64,
+        "ctr": 0.0081,
+        "cpa": 20.3,
+        "fatigue_index": 1.22,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.18,
+        "ctr": 0.0065,
+        "cpa": 153.55,
+        "fatigue_index": 0.95,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.66
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.57
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.41
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.61
+      }
+    ]
+  },
+  {
+    "week": 5,
+    "week_label": "Week 5 (26 Aug - 24 Oct)",
+    "total_conversions": 815.0,
+    "total_spend": 24528.95,
+    "channels": {
+      "google_ads": {
+        "spend": 7550.51,
+        "conversions": 312.0
+      },
+      "meta_ads": {
+        "spend": 8990.95,
+        "conversions": 452.0
+      },
+      "linkedin_ads": {
+        "spend": 7987.49,
+        "conversions": 51.0
+      }
+    },
+    "blended_cpa": 30.096871165644174,
+    "ga4": {
+      "sessions": 64905,
+      "landing_page_views": 50625,
+      "registration_start": 2481,
+      "registration_complete": 1558,
+      "show_up": 953
+    },
+    "crm": {
+      "mql": 274,
+      "sql": 125,
+      "opportunities": 38,
+      "won_deals": 7,
+      "sponsor_pipeline": 1091708.13,
+      "sponsor_closed": 233447.45
+    },
+    "email": {
+      "sends": 46574,
+      "delivered": 45843,
+      "open": 13679,
+      "click": 1268,
+      "bounce": 731,
+      "complaint": 9,
+      "unsub": 86
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 347,
+        "icp_score": 0.85,
+        "show_up_rate": 0.62
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 293,
+        "icp_score": 0.59,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 252,
+        "icp_score": 0.5,
+        "show_up_rate": 0.59
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 363,
+        "icp_score": 0.36,
+        "show_up_rate": 0.56
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 303,
+        "icp_score": 0.81,
+        "show_up_rate": 0.67
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.41,
+        "ctr": 0.0351,
+        "cpa": 24.2,
+        "fatigue_index": 0.72,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.75,
+        "ctr": 0.0053,
+        "cpa": 19.89,
+        "fatigue_index": 1.93,
+        "recommended_refresh": true
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.34,
+        "ctr": 0.0067,
+        "cpa": 156.62,
+        "fatigue_index": 0.97,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.7
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.57
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.59
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.47
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.69
+      }
+    ]
+  },
+  {
+    "week": 6,
+    "week_label": "Week 6 (26 Aug - 13 Oct)",
+    "total_conversions": 608.0,
+    "total_spend": 18877.48,
+    "channels": {
+      "google_ads": {
+        "spend": 5206.15,
+        "conversions": 223.0
+      },
+      "meta_ads": {
+        "spend": 6900.29,
+        "conversions": 343.0
+      },
+      "linkedin_ads": {
+        "spend": 6771.04,
+        "conversions": 42.0
+      }
+    },
+    "blended_cpa": 31.048486842105262,
+    "ga4": {
+      "sessions": 53055,
+      "landing_page_views": 41382,
+      "registration_start": 1972,
+      "registration_complete": 1225,
+      "show_up": 758
+    },
+    "crm": {
+      "mql": 223,
+      "sql": 93,
+      "opportunities": 34,
+      "won_deals": 5,
+      "sponsor_pipeline": 892288.85,
+      "sponsor_closed": 201102.52
+    },
+    "email": {
+      "sends": 48329,
+      "delivered": 47735,
+      "open": 14241,
+      "click": 1617,
+      "bounce": 594,
+      "complaint": 12,
+      "unsub": 63
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 286,
+        "icp_score": 0.86,
+        "show_up_rate": 0.59
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 211,
+        "icp_score": 0.62,
+        "show_up_rate": 0.65
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 195,
+        "icp_score": 0.55,
+        "show_up_rate": 0.53
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 288,
+        "icp_score": 0.31,
+        "show_up_rate": 0.55
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 245,
+        "icp_score": 0.82,
+        "show_up_rate": 0.63
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.22,
+        "ctr": 0.0338,
+        "cpa": 23.35,
+        "fatigue_index": 0.69,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.72,
+        "ctr": 0.0053,
+        "cpa": 20.12,
+        "fatigue_index": 1.88,
+        "recommended_refresh": true
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.24,
+        "ctr": 0.0058,
+        "cpa": 161.22,
+        "fatigue_index": 1.08,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.65
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.6
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.53
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.45
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.67
+      }
+    ]
+  },
+  {
+    "week": 6,
+    "week_label": "Week 6 (26 Aug - 16 Oct)",
+    "total_conversions": 678.0,
+    "total_spend": 20730.68,
+    "channels": {
+      "google_ads": {
+        "spend": 5755.84,
+        "conversions": 258.0
+      },
+      "meta_ads": {
+        "spend": 7630.09,
+        "conversions": 376.0
+      },
+      "linkedin_ads": {
+        "spend": 7344.75,
+        "conversions": 44.0
+      }
+    },
+    "blended_cpa": 30.57622418879056,
+    "ga4": {
+      "sessions": 57095,
+      "landing_page_views": 44534,
+      "registration_start": 2191,
+      "registration_complete": 1341,
+      "show_up": 807
+    },
+    "crm": {
+      "mql": 249,
+      "sql": 102,
+      "opportunities": 28,
+      "won_deals": 4,
+      "sponsor_pipeline": 981217.05,
+      "sponsor_closed": 240539.27
+    },
+    "email": {
+      "sends": 50995,
+      "delivered": 50527,
+      "open": 14862,
+      "click": 1487,
+      "bounce": 468,
+      "complaint": 3,
+      "unsub": 96
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 286,
+        "icp_score": 0.83,
+        "show_up_rate": 0.67
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 250,
+        "icp_score": 0.57,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 208,
+        "icp_score": 0.51,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 341,
+        "icp_score": 0.37,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 256,
+        "icp_score": 0.78,
+        "show_up_rate": 0.61
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.45,
+        "ctr": 0.0339,
+        "cpa": 22.31,
+        "fatigue_index": 0.76,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 3.92,
+        "ctr": 0.0071,
+        "cpa": 20.29,
+        "fatigue_index": 1.5,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.49,
+        "ctr": 0.0054,
+        "cpa": 166.93,
+        "fatigue_index": 1.26,
+        "recommended_refresh": false
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.69
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.44
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.7
+      }
+    ]
+  },
+  {
+    "week": 7,
+    "week_label": "Week 7 (26 Aug - 6 Oct)",
+    "total_conversions": 477.0,
+    "total_spend": 15250.12,
+    "channels": {
+      "google_ads": {
+        "spend": 4349.42,
+        "conversions": 181.0
+      },
+      "meta_ads": {
+        "spend": 5286.91,
+        "conversions": 267.0
+      },
+      "linkedin_ads": {
+        "spend": 5613.79,
+        "conversions": 29.0
+      }
+    },
+    "blended_cpa": 31.970901467505243,
+    "ga4": {
+      "sessions": 44899,
+      "landing_page_views": 35021,
+      "registration_start": 1777,
+      "registration_complete": 902,
+      "show_up": 565
+    },
+    "crm": {
+      "mql": 171,
+      "sql": 72,
+      "opportunities": 22,
+      "won_deals": 3,
+      "sponsor_pipeline": 753609.91,
+      "sponsor_closed": 154799.59
+    },
+    "email": {
+      "sends": 47919,
+      "delivered": 47369,
+      "open": 13798,
+      "click": 1653,
+      "bounce": 550,
+      "complaint": 7,
+      "unsub": 62
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 146,
+        "icp_score": 0.85,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 156,
+        "icp_score": 0.57,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 143,
+        "icp_score": 0.52,
+        "show_up_rate": 0.64
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 272,
+        "icp_score": 0.27,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 185,
+        "icp_score": 0.79,
+        "show_up_rate": 0.62
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.47,
+        "ctr": 0.0351,
+        "cpa": 24.03,
+        "fatigue_index": 0.74,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 4.46,
+        "ctr": 0.0058,
+        "cpa": 19.8,
+        "fatigue_index": 2.08,
+        "recommended_refresh": true
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 3.97,
+        "ctr": 0.0034,
+        "cpa": 193.58,
+        "fatigue_index": 2.26,
+        "recommended_refresh": true
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.53
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.46
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.68
+      }
+    ]
+  },
+  {
+    "week": 7,
+    "week_label": "Week 7 (26 Aug - 9 Oct)",
+    "total_conversions": 530.0,
+    "total_spend": 16892.84,
+    "channels": {
+      "google_ads": {
+        "spend": 4807.55,
+        "conversions": 195.0
+      },
+      "meta_ads": {
+        "spend": 5940.94,
+        "conversions": 300.0
+      },
+      "linkedin_ads": {
+        "spend": 6144.35,
+        "conversions": 35.0
+      }
+    },
+    "blended_cpa": 31.873283018867923,
+    "ga4": {
+      "sessions": 48392,
+      "landing_page_views": 37745,
+      "registration_start": 1880,
+      "registration_complete": 1001,
+      "show_up": 614
+    },
+    "crm": {
+      "mql": 188,
+      "sql": 73,
+      "opportunities": 25,
+      "won_deals": 4,
+      "sponsor_pipeline": 838429.92,
+      "sponsor_closed": 183429.29
+    },
+    "email": {
+      "sends": 47017,
+      "delivered": 45883,
+      "open": 11720,
+      "click": 1145,
+      "bounce": 1134,
+      "complaint": 16,
+      "unsub": 85
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 119,
+        "icp_score": 0.87,
+        "show_up_rate": 0.64
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 154,
+        "icp_score": 0.61,
+        "show_up_rate": 0.62
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 161,
+        "icp_score": 0.5,
+        "show_up_rate": 0.59
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 373,
+        "icp_score": 0.32,
+        "show_up_rate": 0.52
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 194,
+        "icp_score": 0.78,
+        "show_up_rate": 0.62
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.79,
+        "ctr": 0.0329,
+        "cpa": 24.65,
+        "fatigue_index": 0.89,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 4.51,
+        "ctr": 0.0068,
+        "cpa": 19.8,
+        "fatigue_index": 1.8,
+        "recommended_refresh": true
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 4.26,
+        "ctr": 0.0041,
+        "cpa": 175.55,
+        "fatigue_index": 2.04,
+        "recommended_refresh": true
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.64
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.57
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.48
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.43
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.71
+      }
+    ]
+  },
+  {
+    "week": 8,
+    "week_label": "Week 8 (26 Aug - 29 Sept)",
+    "total_conversions": 353.0,
+    "total_spend": 11863.93,
+    "channels": {
+      "google_ads": {
+        "spend": 3357.26,
+        "conversions": 124.0
+      },
+      "meta_ads": {
+        "spend": 3994.12,
+        "conversions": 220.0
+      },
+      "linkedin_ads": {
+        "spend": 4512.55,
+        "conversions": 9.0
+      }
+    },
+    "blended_cpa": 33.60886685552408,
+    "ga4": {
+      "sessions": 39363,
+      "landing_page_views": 30703,
+      "registration_start": 1611,
+      "registration_complete": 737,
+      "show_up": 468
+    },
+    "crm": {
+      "mql": 142,
+      "sql": 60,
+      "opportunities": 18,
+      "won_deals": 3,
+      "sponsor_pipeline": 672955.17,
+      "sponsor_closed": 179054.98
+    },
+    "email": {
+      "sends": 48274,
+      "delivered": 46948,
+      "open": 11564,
+      "click": 1462,
+      "bounce": 1326,
+      "complaint": 24,
+      "unsub": 81
+    },
+    "segments": [
+      {
+        "segment": "VP+ EMEA",
+        "registrations": 69,
+        "icp_score": 0.88,
+        "show_up_rate": 0.6
+      },
+      {
+        "segment": "Director UK",
+        "registrations": 144,
+        "icp_score": 0.62,
+        "show_up_rate": 0.65
+      },
+      {
+        "segment": "Manager Spain",
+        "registrations": 117,
+        "icp_score": 0.53,
+        "show_up_rate": 0.63
+      },
+      {
+        "segment": "SMB Prospect",
+        "registrations": 253,
+        "icp_score": 0.31,
+        "show_up_rate": 0.61
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "registrations": 154,
+        "icp_score": 0.82,
+        "show_up_rate": 0.68
+      }
+    ],
+    "creative_fatigue": [
+      {
+        "platform": "google_ads",
+        "frequency": 2.96,
+        "ctr": 0.0341,
+        "cpa": 27.07,
+        "fatigue_index": 0.91,
+        "recommended_refresh": false
+      },
+      {
+        "platform": "meta_ads",
+        "frequency": 5.03,
+        "ctr": 0.0048,
+        "cpa": 18.16,
+        "fatigue_index": 2.82,
+        "recommended_refresh": true
+      },
+      {
+        "platform": "linkedin_ads",
+        "frequency": 4.44,
+        "ctr": 0.0034,
+        "cpa": 501.39,
+        "fatigue_index": 2.54,
+        "recommended_refresh": true
+      }
+    ],
+    "message_resonance": [
+      {
+        "segment": "VP+ EMEA",
+        "resonance_score": 0.59
+      },
+      {
+        "segment": "Director UK",
+        "resonance_score": 0.56
+      },
+      {
+        "segment": "Manager Spain",
+        "resonance_score": 0.58
+      },
+      {
+        "segment": "SMB Prospect",
+        "resonance_score": 0.39
+      },
+      {
+        "segment": "Enterprise Target Accounts",
+        "resonance_score": 0.75
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "name": "event-pulse-demo",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "npm -w apps/web run build",
+    "start": "netlify dev"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.4"
+  }
+}
