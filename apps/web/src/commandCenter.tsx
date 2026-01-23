@@ -36,6 +36,35 @@ function normalizeWeeks(data: any): any[] {
   return Array.isArray(maybe) ? maybe : [];
 }
 
+// Custom tooltip style for white text
+const tooltipStyle = {
+  background: "rgba(5, 7, 10, 0.95)",
+  backdropFilter: "blur(12px)",
+  WebkitBackdropFilter: "blur(12px)",
+  border: "1px solid rgba(255,255,255,0.15)",
+  borderRadius: 12,
+  padding: "12px 16px",
+  boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+  color: "#FFFFFF",
+};
+
+// Custom tooltip component with white text
+const CustomTooltip = ({ active, payload, label }: any) => {
+  if (!active || !payload || !payload.length) return null;
+  return (
+    <div style={tooltipStyle}>
+      <div style={{ fontWeight: 600, marginBottom: 8, color: "#FFFFFF" }}>{label}</div>
+      {payload.map((entry: any, i: number) => (
+        <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+          <span style={{ width: 8, height: 8, borderRadius: 999, background: entry.color }} />
+          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 12 }}>{entry.name}:</span>
+          <span style={{ color: "#FFFFFF", fontWeight: 600, fontSize: 12 }}>{entry.value?.toLocaleString()}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export function CommandCenter() {
   const weeksQ = useQuery({
     queryKey: ["weeks"],
@@ -81,17 +110,17 @@ export function CommandCenter() {
     alertsQ.isLoading ? "loading" : alertsQ.isError ? "error" : "ready";
 
   const sevTone = (s: string) =>
-    s === "high" ? "coral" : s === "medium" ? "violet" : "mint";
+    s === "high" ? "critical" : s === "medium" ? "warning" : "cyan";
 
   // ✅ Now you can safely return early — hooks already ran
   if (weeksQ.isLoading) {
     return (
       <Shell>
         <div className="glass sheen" style={{ padding: 18, maxWidth: 560 }}>
-          <div style={{ fontSize: 18, fontWeight: 950 }}>
+          <div style={{ fontSize: 18, fontWeight: 700, color: "var(--text)" }}>
             Loading Command Center…
           </div>
-          <div style={{ opacity: 0.75, marginTop: 6 }}>
+          <div style={{ opacity: 0.75, marginTop: 6, color: "var(--text-secondary)" }}>
             Warming up data + forecasts.
           </div>
           <div
@@ -99,17 +128,18 @@ export function CommandCenter() {
               marginTop: 12,
               height: 8,
               borderRadius: 999,
-              background: "rgba(240,244,248,0.10)",
+              background: "rgba(255,255,255,0.10)",
               overflow: "hidden",
             }}
           >
             <div
+              className="animate-pulse-slow"
               style={{
                 width: "46%",
                 height: "100%",
                 borderRadius: 999,
                 background:
-                  "linear-gradient(90deg, rgba(123,110,246,0.35), rgba(62,205,163,0.25))",
+                  "linear-gradient(90deg, rgba(0, 242, 255, 0.35), rgba(138, 43, 226, 0.25))",
               }}
             />
           </div>
@@ -122,18 +152,18 @@ export function CommandCenter() {
     return (
       <Shell>
         <div className="glass sheen" style={{ padding: 18, maxWidth: 720 }}>
-          <div style={{ fontSize: 18, fontWeight: 950 }}>API error</div>
-          <div style={{ opacity: 0.8, marginTop: 6 }}>
-            The app couldn’t load <code>/api/demo/weeks</code>.
+          <div style={{ fontSize: 18, fontWeight: 700, color: "var(--text)" }}>API error</div>
+          <div style={{ opacity: 0.8, marginTop: 6, color: "var(--text-secondary)" }}>
+            The app couldn't load <code style={{ color: "var(--cyan)" }}>/api/demo/weeks</code>.
           </div>
-          <div style={{ marginTop: 12, fontSize: 12, opacity: 0.75 }}>
+          <div style={{ marginTop: 12, fontSize: 12, color: "var(--text-muted)" }}>
             Try opening this in a new tab to confirm it responds:
             <div style={{ marginTop: 8 }}>
-              <code>/api/demo/weeks</code>
+              <code style={{ color: "var(--cyan)" }}>/api/demo/weeks</code>
             </div>
           </div>
           <div style={{ marginTop: 12 }}>
-            <a href="/overview" style={{ textDecoration: "none", opacity: 0.9 }}>
+            <a href="/overview" style={{ textDecoration: "none", color: "var(--cyan)" }}>
               Open Overview →
             </a>
           </div>
@@ -146,24 +176,24 @@ export function CommandCenter() {
     return (
       <Shell>
         <div className="glass sheen" style={{ padding: 18, maxWidth: 680 }}>
-          <div style={{ fontSize: 18, fontWeight: 950 }}>
+          <div style={{ fontSize: 18, fontWeight: 700, color: "var(--text)" }}>
             No demo weeks data yet
           </div>
-          <div style={{ opacity: 0.78, marginTop: 6 }}>
+          <div style={{ opacity: 0.78, marginTop: 6, color: "var(--text-secondary)" }}>
             The API returned an unexpected shape.
           </div>
           <div
             style={{
               marginTop: 10,
               fontSize: 12,
-              opacity: 0.75,
+              color: "var(--text-muted)",
               whiteSpace: "pre-wrap",
             }}
           >
             {JSON.stringify(weeksRaw, null, 2)}
           </div>
           <div style={{ marginTop: 12 }}>
-            <a href="/overview" style={{ textDecoration: "none", opacity: 0.9 }}>
+            <a href="/overview" style={{ textDecoration: "none", color: "var(--cyan)" }}>
               Open Overview →
             </a>
           </div>
@@ -183,10 +213,10 @@ export function CommandCenter() {
         }}
       >
         <div>
-          <div style={{ fontSize: 26, fontWeight: 950, letterSpacing: -0.6 }}>
+          <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: -0.6, color: "var(--text)" }}>
             Command Center
           </div>
-          <div style={{ opacity: 0.75, marginTop: 6 }}>
+          <div style={{ color: "var(--text-secondary)", marginTop: 6 }}>
             High-energy ops room view: pace, constraints, channel mix, and alerts.
           </div>
         </div>
@@ -194,11 +224,11 @@ export function CommandCenter() {
           <span
             className="dot"
             style={{
-              background: "var(--mint)",
-              boxShadow: "0 0 0 6px rgba(62,205,163,0.12)",
+              background: "var(--success)",
+              boxShadow: "0 0 0 6px rgba(34, 197, 94, 0.15), 0 0 20px rgba(34, 197, 94, 0.3)",
             }}
           />
-          <Pill tone="mint">LIVE</Pill>
+          <Pill tone="success">LIVE</Pill>
         </div>
       </div>
 
@@ -229,8 +259,8 @@ export function CommandCenter() {
             Δ vs last week:{" "}
             <span
               style={{
-                color: completionDelta < 0 ? "var(--coral)" : "var(--mint)",
-                fontWeight: 900,
+                color: completionDelta < 0 ? "var(--critical)" : "var(--success)",
+                fontWeight: 700,
               }}
             >
               {Math.round(completionDelta * 1000) / 10}pp
@@ -257,45 +287,38 @@ export function CommandCenter() {
       >
         <Card
           title="Registration pace forecast (demo)"
-          right={<Pill tone="violet">FORECAST</Pill>}
+          right={<Pill tone="purple">FORECAST</Pill>}
         >
           <div style={{ width: "100%", height: 320 }}>
             <ResponsiveContainer>
               <AreaChart data={Array.isArray(pace) ? pace : []}>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(240,244,248,0.10)" />
-                <XAxis dataKey="name" stroke="rgba(240,244,248,0.65)" />
-                <YAxis stroke="rgba(240,244,248,0.65)" />
-                <Tooltip
-                  contentStyle={{
-                    background: "rgba(12,16,28,0.70)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    border: "1px solid rgba(240,244,248,0.16)",
-                  }}
-                />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.08)" />
+                <XAxis dataKey="name" stroke="rgba(255,255,255,0.5)" tick={{ fill: "#FFFFFF" }} />
+                <YAxis stroke="rgba(255,255,255,0.5)" tick={{ fill: "#FFFFFF" }} />
+                <Tooltip content={<CustomTooltip />} />
                 <Area type="monotone" dataKey="lo" stackId="band" stroke="none" fill="rgba(0,0,0,0)" />
-                <Area type="monotone" dataKey="band" stackId="band" stroke="none" fill="rgba(123,110,246,0.18)" />
-                <Line type="monotone" dataKey="actual" stroke="var(--mint)" strokeWidth={2.5} dot={false} />
-                <Line type="monotone" dataKey="forecast" stroke="var(--violet)" strokeWidth={2} dot={false} />
+                <Area type="monotone" dataKey="band" stackId="band" stroke="none" fill="rgba(138, 43, 226, 0.15)" />
+                <Line type="monotone" dataKey="actual" stroke="var(--cyan)" strokeWidth={2.5} dot={false} style={{ filter: "drop-shadow(0 0 8px rgba(0, 242, 255, 0.4))" }} />
+                <Line type="monotone" dataKey="forecast" stroke="var(--purple)" strokeWidth={2} dot={false} style={{ filter: "drop-shadow(0 0 8px rgba(138, 43, 226, 0.4))" }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
-          <div style={{ opacity: 0.72, marginTop: 8 }}>
+          <div style={{ color: "var(--text-muted)", marginTop: 8, fontSize: 13 }}>
             Band shows forecast uncertainty. Use Simulation to see lift from fixes.
           </div>
         </Card>
 
-        <Card title="Live alerts" right={<Pill tone="coral">SHIFTS</Pill>}>
+        <Card title="Live alerts" right={<Pill tone="critical">SHIFTS</Pill>}>
           <div style={{ display: "grid", gap: 10 }}>
             {alertsState === "loading" && (
-              <div style={{ opacity: 0.8 }}>Loading alerts…</div>
+              <div style={{ color: "var(--text-secondary)" }}>Loading alerts…</div>
             )}
 
             {alertsState === "error" && (
-              <div style={{ opacity: 0.8 }}>
+              <div style={{ color: "var(--text-secondary)" }}>
                 Alerts are temporarily unavailable.
                 <div style={{ marginTop: 8 }}>
-                  <a href="/alerts" style={{ textDecoration: "none" }}>
+                  <a href="/alerts" style={{ textDecoration: "none", color: "var(--cyan)" }}>
                     Open Alerts →
                   </a>
                 </div>
@@ -310,23 +333,23 @@ export function CommandCenter() {
                     className="glass sheen"
                     style={{
                       padding: 12,
-                      borderRadius: 18,
+                      borderRadius: 14,
                       border: "1px solid var(--glass-border)",
                       background:
-                        "linear-gradient(180deg, rgba(240,244,248,0.10), rgba(240,244,248,0.05))",
+                        "linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))",
                       boxShadow: "var(--shadow-card)",
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ fontWeight: 900 }}>{a.title}</div>
+                      <div style={{ fontWeight: 600, color: "var(--text)" }}>{a.title}</div>
                       <Pill tone={sevTone(String(a.severity)) as any}>
                         {String(a.severity).toUpperCase()}
                       </Pill>
                     </div>
-                    <div style={{ marginTop: 6, opacity: 0.85, lineHeight: 1.45 }}>{a.message}</div>
+                    <div style={{ marginTop: 6, color: "var(--text-secondary)", lineHeight: 1.45, fontSize: 13 }}>{a.message}</div>
                   </div>
                 ))}
-                <a href="/alerts" style={{ opacity: 0.8, textDecoration: "none" }}>
+                <a href="/alerts" style={{ color: "var(--cyan)", textDecoration: "none", fontSize: 13 }}>
                   View all alerts →
                 </a>
               </>
@@ -336,82 +359,68 @@ export function CommandCenter() {
       </div>
 
       <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-        <Card title="Funnel waterfall (constraint highlighted)" right={<Pill tone="mint">DIAGNOSTICS</Pill>}>
+        <Card title="Funnel waterfall (constraint highlighted)" right={<Pill tone="cyan">DIAGNOSTICS</Pill>}>
           <div style={{ width: "100%", height: 300 }}>
             <ResponsiveContainer>
               <BarChart data={Array.isArray(funnel) ? funnel : []}>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(240,244,248,0.10)" />
-                <XAxis dataKey="name" stroke="rgba(240,244,248,0.65)" />
-                <YAxis stroke="rgba(240,244,248,0.65)" />
-                <Tooltip
-                  contentStyle={{
-                    background: "rgba(12,16,28,0.70)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    border: "1px solid rgba(240,244,248,0.16)",
-                  }}
-                />
-                <Bar dataKey="value" radius={[12, 12, 12, 12]}>
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.08)" />
+                <XAxis dataKey="name" stroke="rgba(255,255,255,0.5)" tick={{ fill: "#FFFFFF" }} />
+                <YAxis stroke="rgba(255,255,255,0.5)" tick={{ fill: "#FFFFFF" }} />
+                <Tooltip content={<CustomTooltip />} />
+                <Bar dataKey="value" radius={[8, 8, 8, 8]}>
                   {Array.isArray(funnel)
                     ? funnel.map((entry: any, index: number) => (
-                        <Cell key={`cell-${index}`} fill={entry?.fill ?? "var(--mint)"} />
+                        <Cell key={`cell-${index}`} fill={entry?.fill ?? "var(--cyan)"} />
                       ))
                     : null}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div style={{ opacity: 0.72, marginTop: 8 }}>
-            Worst conversion step is coral (binding constraint).
+          <div style={{ color: "var(--text-muted)", marginTop: 8, fontSize: 13 }}>
+            Worst conversion step is <span style={{ color: "var(--critical)" }}>highlighted</span> (binding constraint).
           </div>
         </Card>
 
-        <Card title="Channel mix (spend vs conversions)" right={<Pill tone="violet">MIX</Pill>}>
+        <Card title="Channel mix (spend vs conversions)" right={<Pill tone="purple">MIX</Pill>}>
           <div style={{ width: "100%", height: 300 }}>
             <ResponsiveContainer>
               <BarChart data={Array.isArray(channelMix) ? channelMix : []}>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(240,244,248,0.10)" />
-                <XAxis dataKey="name" stroke="rgba(240,244,248,0.65)" />
-                <YAxis stroke="rgba(240,244,248,0.65)" />
-                <Tooltip
-                  contentStyle={{
-                    background: "rgba(12,16,28,0.70)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    border: "1px solid rgba(240,244,248,0.16)",
-                  }}
-                />
-                <Legend />
-                <Bar dataKey="GoogleSpend" stackId="a" fill="var(--mint)" />
-                <Bar dataKey="MetaSpend" stackId="a" fill="var(--coral)" />
-                <Bar dataKey="LinkedInSpend" stackId="a" fill="var(--violet)" />
-                <Bar dataKey="GoogleConv" stackId="b" fill="rgba(62,205,163,0.45)" />
-                <Bar dataKey="MetaConv" stackId="b" fill="rgba(240,113,103,0.45)" />
-                <Bar dataKey="LinkedInConv" stackId="b" fill="rgba(123,110,246,0.45)" />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.08)" />
+                <XAxis dataKey="name" stroke="rgba(255,255,255,0.5)" tick={{ fill: "#FFFFFF" }} />
+                <YAxis stroke="rgba(255,255,255,0.5)" tick={{ fill: "#FFFFFF" }} />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend wrapperStyle={{ color: "#FFFFFF" }} />
+                <Bar dataKey="GoogleSpend" stackId="a" fill="var(--cyan)" />
+                <Bar dataKey="MetaSpend" stackId="a" fill="var(--critical)" />
+                <Bar dataKey="LinkedInSpend" stackId="a" fill="var(--purple)" />
+                <Bar dataKey="GoogleConv" stackId="b" fill="rgba(0, 242, 255, 0.45)" />
+                <Bar dataKey="MetaConv" stackId="b" fill="rgba(255, 77, 77, 0.45)" />
+                <Bar dataKey="LinkedInConv" stackId="b" fill="rgba(138, 43, 226, 0.45)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div style={{ opacity: 0.72, marginTop: 8 }}>Two stacks: Spend (a) and Conversions (b).</div>
+          <div style={{ color: "var(--text-muted)", marginTop: 8, fontSize: 13 }}>Two stacks: Spend (a) and Conversions (b).</div>
         </Card>
       </div>
 
       <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "1fr", gap: 12 }}>
-        <Card title="Top actions right now" right={<Pill tone="coral">NEXT BEST</Pill>}>
+        <Card title="Top actions right now" right={<Pill tone="warning">NEXT BEST</Pill>}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
             <ActionCard
-              tone="mint"
+              tone="cyan"
               title="Fix Step 2 form friction"
               impact="+5–8% completion"
               steps={["Remove non-essential fields", "Enable autofill", "Validate GA4 step events"]}
             />
             <ActionCard
-              tone="violet"
+              tone="purple"
               title="Shift 15% retargeting → high-intent"
               impact="+3–6% incremental VP+"
               steps={["Reduce retargeting budgets", "Increase search + partner", "Reopen once completion recovers"]}
             />
             <ActionCard
-              tone="coral"
+              tone="critical"
               title="Refresh fatigued creatives"
               impact="+2–4% CVR"
               steps={["Rotate 3 new variants", "Cap frequency", "Pivot VP+ value prop to outcomes"]}
@@ -423,32 +432,36 @@ export function CommandCenter() {
   );
 }
 
-function ActionCard(props: { tone: "mint" | "violet" | "coral"; title: string; impact: string; steps: string[] }) {
-  const border =
-    props.tone === "mint"
-      ? "rgba(62,205,163,0.30)"
-      : props.tone === "coral"
-      ? "rgba(240,113,103,0.32)"
-      : "rgba(123,110,246,0.30)";
+function ActionCard(props: { tone: "cyan" | "purple" | "critical" | "warning" | "success"; title: string; impact: string; steps: string[] }) {
+  const borderColors: Record<string, string> = {
+    cyan: "rgba(0, 242, 255, 0.3)",
+    purple: "rgba(138, 43, 226, 0.3)",
+    critical: "rgba(255, 77, 77, 0.3)",
+    warning: "rgba(255, 138, 0, 0.3)",
+    success: "rgba(34, 197, 94, 0.3)"
+  };
+  
+  const border = borderColors[props.tone] || borderColors.cyan;
 
   return (
     <div
       className="glass sheen"
       style={{
         padding: 14,
-        borderRadius: 20,
+        borderRadius: 14,
         border: `1px solid ${border}`,
         WebkitBackdropFilter: "var(--blur)",
         backdropFilter: "var(--blur)",
-        background: "linear-gradient(180deg, rgba(240,244,248,0.12), rgba(240,244,248,0.06))",
+        background: "linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))",
         boxShadow: "var(--shadow-soft)",
+        transition: "all 0.3s ease",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-        <div style={{ fontWeight: 950 }}>{props.title}</div>
+        <div style={{ fontWeight: 600, color: "var(--text)" }}>{props.title}</div>
         <Pill tone={props.tone as any}>{props.impact}</Pill>
       </div>
-      <ol style={{ margin: "10px 0 0 18px", opacity: 0.9 }}>
+      <ol style={{ margin: "10px 0 0 18px", color: "var(--text-secondary)", fontSize: 13 }}>
         {props.steps.map((s, i) => (
           <li key={i} style={{ marginTop: 6 }}>
             {s}
@@ -529,7 +542,7 @@ function buildFunnel(latest: any) {
 
   return steps.map((s, i) => ({
     ...s,
-    fill: i === worstIdx ? "var(--coral)" : "var(--mint)",
+    fill: i === worstIdx ? "var(--critical)" : "var(--cyan)",
   }));
 }
 
