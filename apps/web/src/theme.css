@@ -1,128 +1,111 @@
+/* ============================================================
+   EVENT PULSE - THEME v2.0
+   WME.AI Command Center
+   Updated: Jan 2026
+   ============================================================ */
+
 :root{
-  --mint:#3ECDA3;
-  --violet:#7B6EF6;
-  --coral:#F07167;
-  --navy:#1E2D3D;
-  --light:#F0F4F8;
+  /* Primary Accent - Electric Cyan */
+  --cyan:#00F2FF;
+  --cyan-glow: rgba(0, 242, 255, 0.4);
+  --cyan-muted: rgba(0, 242, 255, 0.15);
+  
+  /* Secondary Accent - Royal Purple */
+  --purple:#8A2BE2;
+  --purple-glow: rgba(138, 43, 226, 0.4);
+  
+  /* Legacy color mappings (for existing components) */
+  --mint:#22C55E;
+  --violet:#8A2BE2;
+  --coral:#FF4D4D;
+  
+  /* Alert Colors */
+  --warning:#FF8A00;
+  --warning-glow: rgba(255, 138, 0, 0.3);
+  --critical:#FF4D4D;
+  --critical-glow: rgba(255, 77, 77, 0.3);
+  --success:#22C55E;
+  --success-glow: rgba(34, 197, 94, 0.3);
+  
+  /* Backgrounds */
+  --navy:#0F172A;
+  --bg:#05070A;
+  --bg-soft:#0F172A;
+  --bg-card: rgba(15, 23, 42, 0.6);
 
-  --bg:#0b1020;
-  --bg-soft:#0f1730;
+  /* Text */
+  --light:#FFFFFF;
+  --text:#FFFFFF;
+  --text-secondary:#94A3B8;
+  --text-muted:#64748B;
 
-  --text:var(--light);
-  --text-muted:rgba(240,244,248,0.75);
+  /* Borders */
+  --border:rgba(255, 255, 255, 0.1);
+  --border-strong:rgba(255, 255, 255, 0.2);
+  --border-active:rgba(0, 242, 255, 0.5);
 
-  --border:rgba(240,244,248,0.12);
-  --border-strong:rgba(240,244,248,0.18);
+  /* Cards */
+  --card:rgba(255, 255, 255, 0.03);
+  --card-strong:rgba(255, 255, 255, 0.06);
 
-  --card:rgba(240,244,248,0.06);
-  --card-strong:rgba(240,244,248,0.08);
-
-  --shadow: 0 18px 60px rgba(0,0,0,0.40);
+  /* Shadows */
+  --shadow: 0 18px 60px rgba(0,0,0,0.50);
+  
+  /* Glow Effects */
+  --glow-cyan: 0 0 20px rgba(0, 242, 255, 0.4);
+  --glow-purple: 0 0 20px rgba(138, 43, 226, 0.4);
+  --glow-mint: 0 0 20px rgba(34, 197, 94, 0.3);
+  --glow-coral: 0 0 20px rgba(255, 77, 77, 0.3);
+  --glow-warning: 0 0 20px rgba(255, 138, 0, 0.3);
+  --glow-white: 0 0 0 1px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,0.05);
 }
 
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 html,body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Segoe UI, Roboto, Helvetica, Arial;
-  background:
-    radial-gradient(900px 600px at 15% 10%, rgba(123,110,246,0.18), transparent 58%),
-    radial-gradient(900px 650px at 85% 25%, rgba(62,205,163,0.14), transparent 60%),
-    radial-gradient(800px 520px at 60% 90%, rgba(240,113,103,0.10), transparent 62%),
-    linear-gradient(180deg, #070B14, #0A1020 40%, #070B14);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: #05070A;
   color: var(--text);
-}body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Segoe UI, Roboto, Helvetica, Arial;
-  background:
-    radial-gradient(900px 600px at 15% 10%, rgba(123,110,246,0.18), transparent 58%),
-    radial-gradient(900px 650px at 85% 25%, rgba(62,205,163,0.14), transparent 60%),
-    radial-gradient(800px 520px at 60% 90%, rgba(240,113,103,0.10), transparent 62%),
-    linear-gradient(180deg, #070B14, #0A1020 40%, #070B14);
-  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+body{
+  background:
+    radial-gradient(800px 500px at 15% 10%, rgba(0, 242, 255, 0.08), transparent 50%),
+    radial-gradient(800px 500px at 85% 25%, rgba(138, 43, 226, 0.06), transparent 50%),
+    radial-gradient(600px 400px at 60% 90%, rgba(255, 138, 0, 0.04), transparent 50%),
+    linear-gradient(180deg, #05070A, #0A0D14 40%, #05070A);
+}
+
 a{color:inherit}
 *{box-sizing:border-box}
 
+/* ============================================================
+   GLASSMORPHISM SYSTEM
+   ============================================================ */
 :root{
-  --glow-mint: 0 0 0 1px rgba(62,205,163,0.30), 0 0 28px rgba(62,205,163,0.20);
-  --glow-violet: 0 0 0 1px rgba(123,110,246,0.30), 0 0 28px rgba(123,110,246,0.20);
-  --glow-coral: 0 0 0 1px rgba(240,113,103,0.32), 0 0 28px rgba(240,113,103,0.20);
-  --glow-white: 0 0 0 1px rgba(240,244,248,0.22), 0 0 26px rgba(240,244,248,0.10);
-}
+  --glass: rgba(15, 23, 42, 0.6);
+  --glass-strong: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-strong: rgba(255, 255, 255, 0.15);
+  --glass-border-active: rgba(0, 242, 255, 0.5);
 
-@keyframes pulseDot{
-  0%{transform:scale(1); opacity:0.9}
-  50%{transform:scale(1.35); opacity:0.55}
-  100%{transform:scale(1); opacity:0.9}
-}
+  --shadow-soft: 0 18px 50px rgba(0,0,0,0.5);
+  --shadow-card: 0 10px 40px rgba(0,0,0,0.4);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.05);
 
-@keyframes scanSweep{
-  0%{transform:translateX(-40%); opacity:0}
-  20%{opacity:0.35}
-  50%{opacity:0.10}
-  100%{transform:translateX(140%); opacity:0}
-}
-
-.ops-scan{
-  position: relative;
-  overflow:hidden;
-}
-.ops-scan:after{
-  content:"";
-  position:absolute;
-  top:-20%;
-  left:-60%;
-  width:60%;
-  height:140%;
-  background: linear-gradient(90deg, transparent, rgba(123,110,246,0.22), rgba(62,205,163,0.18), transparent);
-  transform:skewX(-18deg);
-  animation: scanSweep 5.5s linear infinite;
-  pointer-events:none;
-}
-
-.kpi-tile{
-  border-radius: 22px;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(240,244,248,0.10), rgba(240,244,248,0.05));
-  box-shadow: var(--shadow), var(--glow-white);
-}
-
-.kpi-label{opacity:.72;font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
-.kpi-value{font-size:28px;font-weight:950;letter-spacing:-0.6px;margin-top:6px}
-.kpi-sub{opacity:.75;margin-top:6px;font-size:12px}
-
-.dot{
-  width:10px;height:10px;border-radius:999px;display:inline-block;
-  animation: pulseDot 1.6s ease-in-out infinite;
-}
-
-
-
-/* Apple-glass tokens */
-:root{
-  --glass: rgba(240,244,248,0.08);
-  --glass-strong: rgba(240,244,248,0.12);
-  --glass-border: rgba(240,244,248,0.16);
-  --glass-border-strong: rgba(240,244,248,0.22);
-
-  --shadow-soft: 0 18px 50px rgba(0,0,0,0.45);
-  --shadow-card: 0 10px 30px rgba(0,0,0,0.35);
-  --shadow-inset: inset 0 1px 0 rgba(240,244,248,0.10);
-
-  --blur: blur(14px);
-  --radius-xl: 24px;
-  --radius-lg: 18px;
-}
-
-@keyframes glassSheen{
-  0%{transform:translateX(-60%); opacity:0}
-  20%{opacity:0.35}
-  50%{opacity:0.12}
-  100%{transform:translateX(160%); opacity:0}
+  --blur: blur(10px);
+  --radius-xl: 16px;
+  --radius-lg: 12px;
+  --radius-md: 8px;
 }
 
 .glass{
   position:relative;
-  background: linear-gradient(180deg, var(--glass-strong), var(--glass));
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
@@ -139,6 +122,82 @@ a{color:inherit}
   box-shadow: var(--shadow-inset);
 }
 
+.glass:hover{
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow-card), 0 0 30px rgba(0, 242, 255, 0.1);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes pulseDot{
+  0%{transform:scale(1); opacity:1}
+  50%{transform:scale(1.4); opacity:0.5}
+  100%{transform:scale(1); opacity:1}
+}
+
+@keyframes pulseSlow{
+  0%, 100%{opacity:1}
+  50%{opacity:0.7}
+}
+
+@keyframes glowPulse{
+  0%, 100%{box-shadow: 0 0 10px rgba(0, 242, 255, 0.3)}
+  50%{box-shadow: 0 0 25px rgba(0, 242, 255, 0.5)}
+}
+
+@keyframes scanSweep{
+  0%{transform:translateX(-40%); opacity:0}
+  20%{opacity:0.3}
+  50%{opacity:0.1}
+  100%{transform:translateX(140%); opacity:0}
+}
+
+@keyframes glassSheen{
+  0%{transform:translateX(-60%); opacity:0}
+  20%{opacity:0.25}
+  50%{opacity:0.08}
+  100%{transform:translateX(160%); opacity:0}
+}
+
+@keyframes breathing{
+  0%, 100%{opacity:0.6; transform:scale(1)}
+  50%{opacity:1; transform:scale(1.05)}
+}
+
+.animate-pulse-slow{
+  animation: pulseSlow 2s ease-in-out infinite;
+}
+
+.animate-glow-pulse{
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-breathing{
+  animation: breathing 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   SCAN EFFECT
+   ============================================================ */
+.ops-scan{
+  position: relative;
+  overflow:hidden;
+}
+
+.ops-scan:after{
+  content:"";
+  position:absolute;
+  top:-20%;
+  left:-60%;
+  width:60%;
+  height:140%;
+  background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.15), rgba(138, 43, 226, 0.1), transparent);
+  transform:skewX(-18deg);
+  animation: scanSweep 5.5s linear infinite;
+  pointer-events:none;
+}
+
 .glass.sheen::after{
   content:"";
   position:absolute;
@@ -146,37 +205,250 @@ a{color:inherit}
   left:-80%;
   width:70%;
   height:140%;
-  background: linear-gradient(90deg, transparent, rgba(240,244,248,0.22), rgba(240,244,248,0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), rgba(255,255,255,0.03), transparent);
   transform:skewX(-16deg);
   animation: glassSheen 6.5s linear infinite;
   pointer-events:none;
 }
 
-/* subtle noise overlay (SVG data URI) */
+/* ============================================================
+   KPI TILES
+   ============================================================ */
+.kpi-tile{
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+  box-shadow: var(--shadow-soft);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  transition: all 0.3s ease;
+}
+
+.kpi-tile:hover{
+  border-color: var(--border-active);
+  box-shadow: var(--shadow-soft), var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.kpi-label{
+  opacity:.7;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  color: var(--text-secondary);
+}
+
+.kpi-value{
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:-0.5px;
+  margin-top:8px;
+  color: var(--text);
+}
+
+.kpi-sub{
+  opacity:.75;
+  margin-top:6px;
+  font-size:12px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   STATUS DOT
+   ============================================================ */
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  display:inline-block;
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+.dot-cyan{
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.dot-success{
+  background: var(--success);
+  box-shadow: 0 0 10px var(--success-glow);
+}
+
+.dot-warning{
+  background: var(--warning);
+  box-shadow: 0 0 10px var(--warning-glow);
+}
+
+.dot-critical{
+  background: var(--critical);
+  box-shadow: 0 0 10px var(--critical-glow);
+}
+
+/* ============================================================
+   ALERT BADGES
+   ============================================================ */
+.badge-high{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255, 77, 77, 0.15);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: var(--critical);
+}
+
+.badge-medium{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(255, 138, 0, 0.15);
+  border: 1px solid rgba(255, 138, 0, 0.3);
+  color: var(--warning);
+}
+
+.badge-low{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(0, 242, 255, 0.15);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  color: var(--cyan);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary{
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(0, 242, 255, 0.15);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  color: var(--cyan);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover{
+  background: rgba(0, 242, 255, 0.25);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-1px);
+}
+
+.btn-secondary{
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover{
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--glass-border-strong);
+  color: var(--text);
+}
+
+/* ============================================================
+   AI COPILOT ACTIVE STATE
+   ============================================================ */
+.ai-copilot-active{
+  border-color: rgba(138, 43, 226, 0.5) !important;
+  box-shadow: var(--shadow-card), var(--glow-purple) !important;
+}
+
+/* ============================================================
+   PROGRESS BARS
+   ============================================================ */
+.progress-bar{
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.progress-bar-fill{
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--cyan), #00B8D4);
+  transition: width 0.5s ease;
+}
+
+.progress-bar-warning .progress-bar-fill{
+  background: linear-gradient(90deg, var(--warning), var(--critical));
+}
+
+/* ============================================================
+   CHART GLOW EFFECTS
+   ============================================================ */
+.chart-line-glow{
+  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.4));
+}
+
+.chart-area-glow{
+  filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3));
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   NOISE OVERLAY
+   ============================================================ */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
-  opacity:0.05;
+  opacity:0.03;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
-.kpi-tile{
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--glass-border);
-  background: linear-gradient(180deg, rgba(240,244,248,0.12), rgba(240,244,248,0.06));
-  box-shadow: var(--shadow-soft);
-  -webkit-backdrop-filter: var(--blur);
-  backdrop-filter: var(--blur);
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection{
+  background: rgba(0, 242, 255, 0.3);
+  color: var(--text);
 }
 
-.kpi-label{opacity:.70;font-size:12px;font-weight:800;letter-spacing:.35px;text-transform:uppercase}
-.kpi-value{font-size:30px;font-weight:950;letter-spacing:-0.8px;margin-top:6px}
-.kpi-sub{opacity:.78;margin-top:6px;font-size:12px}
-
-.dot{
-  width:10px;height:10px;border-radius:999px;display:inline-block;
-  animation: pulseDot 1.8s ease-in-out infinite;
+/* ============================================================
+   FOCUS STATES
+   ============================================================ */
+:focus-visible{
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
 }
