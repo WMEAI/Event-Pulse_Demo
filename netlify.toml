@@ -1,10 +1,11 @@
+cat > netlify.toml << 'EOF'
 [build]
   command = "npm install && npm run build"
   publish = "apps/web/dist"
   functions = "netlify/functions"
 
 [dev]
-  command = "npm -w apps/web run dev"
+  framework = "#custom"
   targetPort = 5173
   port = 8890
   functions = "netlify/functions"
@@ -15,8 +16,8 @@
   status = 200
 
 [[redirects]]
-  from = "/api/demo/taxonomy"
-  to = "/.netlify/functions/demo_taxonomy"
+  from = "/api/demo/alerts"
+  to = "/.netlify/functions/demo_alerts"
   status = 200
 
 [[redirects]]
@@ -25,36 +26,7 @@
   status = 200
 
 [[redirects]]
-  from = "/api/demo/segments"
-  to = "/.netlify/functions/demo_segments"
+  from = "/api/demo/simulate"
+  to = "/.netlify/functions/demo_simulate"
   status = 200
-
-[[redirects]]
-  from = "/api/demo/fatigue"
-  to = "/.netlify/functions/demo_fatigue"
-  status = 200
-
-[[redirects]]
-  from = "/api/demo/alerts"
-  to = "/.netlify/functions/demo_alerts"
-  status = 200
-
-[[redirects]]
-  from = "/api/demo/narrative"
-  to = "/.netlify/functions/demo_narrative"
-  status = 200
-
-[[redirects]]
-  from = "/api/copilot_chat"
-  to = "/.netlify/functions/copilot_chat"
-  status = 200
-
-[[redirects]]
-  from = "/api/health"
-  to = "/.netlify/functions/health"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+EOF
